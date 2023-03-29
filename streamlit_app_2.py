@@ -19,7 +19,20 @@ df = pd.DataFrame(my_catalog)
 #put a pick list for people to choose on streamlit
 option = st.selectbox('Pick a sweatsuit color or style:', df.iloc[:,0])
 
-#write df to page to see what I am working with
-st.write(df)
+#Build image caption
+product_caption = 'Our most amazing, ' +option + ' outfit!'
+
+#Use the option selected to go back and get all the info from the database
+my_cur.execute(("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where \
+               color_or_style = '" + option + "';")
+df2 = my_cur.fetchone()
+
+st.image(df2[0], width = 400, caption = product_caption)
+
+#write df to page to see product details
+st.write('Price: ', df2[1])
+st.write('Sizes Available: ',df2[2])
+st.write(df2[3])
+
 
 
