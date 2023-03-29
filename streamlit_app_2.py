@@ -23,7 +23,7 @@ option = st.selectbox('Pick a sweatsuit color or style:', df.iloc[:,0])
 product_caption = 'Our most amazing, ' +option + ' outfit!'
 
 #Use the option selected to go back and get all the info from the database
-my_cur.execute(("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where \
+my_cur.execute("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where \
                color_or_style = '" + option + "';")
 df2 = my_cur.fetchone()
 
