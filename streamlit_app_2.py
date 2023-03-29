@@ -17,7 +17,7 @@ my_catalog = my_cur.fetchall()
 df = pd.DataFrame(my_catalog)
 
 #put a pick list for people to choose on streamlit
-option = st.selectbox('Pick a sweatsuit color or style:', df.loc[:,0])
+option = st.selectbox('Pick a sweatsuit color or style:', df.iloc[:,0])
 
 #write df to page to see what I am working with
 st.write(df)
